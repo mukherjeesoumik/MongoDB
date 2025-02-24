@@ -1,10 +1,5 @@
 # MongoDB
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg) <!-- Replace with your license -->
-![MongoDB](https://img.shields.io/badge/MongoDB-4.4-green.svg) <!-- Replace with your MongoDB version -->
-
 A comprehensive guide to learning MongoDB, covering basics, commands, examples, and practice exercises.
-
 ---
 
 ## Table of Contents
@@ -17,8 +12,6 @@ A comprehensive guide to learning MongoDB, covering basics, commands, examples, 
    - [Query Operators](#query-operators)
    - [Aggregation Pipeline](#aggregation-pipeline)
    - [Indexing](#indexing)
-4. [Practice Exercises](#practice-exercises)
-5. [Resources](#resources)
 
 ---
 
