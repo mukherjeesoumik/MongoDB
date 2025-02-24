@@ -48,34 +48,34 @@ mongo
 ## MongoDB Commands and Examples
 ### a. Database Commands
 #### 1. Show Databases:
-```
+```cs
 show dbs
 ```
 Example:
-```
+```cs
 > show dbs
 ```
 admin   0.000GB
 config  0.000GB
 local   0.000GB
 #### 2. Switch/Create Database:
-```
+```cs
 use <database_name>
 ```
 Example:
 
-```
+```cs
 > use mydb
 switched to db mydb
 ```
 #### 3. Drop Database:
 
-```
+```cs
 db.dropDatabase()
 ```
 Example:
 
-```
+```cs
 > use mydb
 > db.dropDatabase()
 { "dropped" : "mydb", "ok" : 1 }
@@ -83,91 +83,91 @@ Example:
 ## b. Collection Commands
 #### 1. Create Collection:
 
-```
+```cs
 db.createCollection("<collection_name>")
 ```
 Example:
 
-```
+```cs
 > db.createCollection("users")
 { "ok" : 1 }
 ```
 #### 2. Show Collections:
 
-```
+```cs
 show collections
 ```
 Example:
 
-```
+```cs
 > show collections
 users
 ```
 #### 3. Drop Collection:
 
-```
+```cs
 db.<collection_name>.drop()
 ```
 Example:
 
-```
+```cs
 > db.users.drop()
 true
 ```
 ## c. Document Commands
 ##### 1. Insert Document:
 
-```
+```cs
 db.<collection_name>.insert(<document>)
 ```
 Example:
 
-```
+```cs
 > db.users.insert({ name: "John", age: 30, city: "New York" })
 WriteResult({ "nInserted" : 1 })
 ```
 #### 2. Insert Multiple Documents:
 
-```
+```cs
 db.<collection_name>.insertMany([<document1>, <document2>])
 ```
 Example:
 
-```
+```cs
 > db.users.insertMany([
     { name: "Alice", age: 25, city: "London" },
     { name: "Bob", age: 35, city: "Paris" }
   ])
 ```
 #### 3. Find Documents:
-```
+```cs
 db.<collection_name>.find(<query>)
 ```
 Example:
 
-```
+```cs
 > db.users.find({ age: { $gt: 30 } })
 { "_id" : ObjectId("..."), "name" : "Bob", "age" : 35, "city" : "Paris" }
 ```
 #### 4. Update Document:
 
-```
+```cs
 db.<collection_name>.update(<query>, <update>)
 ```
 Example:
 
-```
+```cs
 > db.users.update({ name: "John" }, { $set: { age: 31 } })
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 ```
 #### 5. Delete Document:
 
-```
+```cs
 db.<collection_name>.remove(<query>)
 ```
 Example:
 
-```
+```cs
 > db.users.remove({ name: "John" })
 WriteResult({ "nRemoved" : 1 })
 ```
@@ -190,7 +190,7 @@ MongoDB provides various query operators for filtering data.
 
 Example:
 
-```
+```cs
 > db.users.find({ age: { $gt: 30 } })
 ```
 ### Logical Operators:
@@ -204,7 +204,7 @@ Example:
 4. $nor: Logical NOR
 
 Example:
-```
+```cs
 > db.users.find({ $or: [{ age: 25 }, { city: "Paris" }] })
 ```
 ### Array Operators:
@@ -217,7 +217,7 @@ Example:
 
 Example:
 
-```
+```cs
 > db.users.find({ city: { $in: ["London", "Paris"] } })
 ```
 ## e. Aggregation Pipeline
@@ -225,12 +225,12 @@ Aggregation operations process data and return computed results.
 
 Aggregation Pipeline:
 
-```
+```cs
 db.<collection_name>.aggregate([<stage1>, <stage2>, ...])
 ```
 Example:
 
-```
+```cs
 > db.users.aggregate([
     { $match: { age: { $gt: 30 } } },
     { $group: { _id: "$city", total: { $sum: 1 } } }
@@ -240,44 +240,44 @@ Example:
 Indexes improve query performance.
 
 #### 1. Create Index:
-```
+```cs
 db.<collection_name>.createIndex({ <field>: 1 })
 ```
 Example:
 
-```
+```cs
 > db.users.createIndex({ name: 1 })
 ```
 #### 2. Show Indexes:
 
-```
+```cs
 db.<collection_name>.getIndexes()
 ```
 Example:
 
-```
+```cs
 > db.users.getIndexes()
 ```
 #### 3.Drop Index:
 
-```
+```cs
 db.<collection_name>.dropIndex({ <field>: 1 })
 ```
 Example:
 
-```
+```cs
 > db.users.dropIndex({ name: 1 })
 ```
 ## Practice Exercises
 #### 1. Create a database called school and a collection called students.
 
-```
+```cs
 > use school
 > db.createCollection("students")
 ```
 #### 2. Insert 5 student documents with fields like name, age, and grade.
 
-```
+```cs
 > db.students.insertMany([
     { name: "Alice", age: 20, grade: "A" },
     { name: "Bob", age: 22, grade: "B" },
@@ -288,21 +288,21 @@ Example:
 ```
 #### 3. Find all students who are older than 20.
 
-```
+```cs
 > db.students.find({ age: { $gt: 20 } })
 ```
 #### 4. Update the grade of a student.
 
-```
+```cs
 > db.students.update({ name: "Alice" }, { $set: { grade: "A+" } })
 ```
 #### 5. Delete a student by name.
 
-```
+```cs
 > db.students.remove({ name: "Eve" })
 ```
 #### 6. Create an index on the name field.
 
-```
+```cs
 > db.students.createIndex({ name: 1 })
 ```
