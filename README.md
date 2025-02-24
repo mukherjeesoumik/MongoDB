@@ -1,4 +1,4 @@
-# MongoDB Study Guide
+# MongoDB
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) <!-- Replace with your license -->
 ![MongoDB](https://img.shields.io/badge/MongoDB-4.4-green.svg) <!-- Replace with your MongoDB version -->
