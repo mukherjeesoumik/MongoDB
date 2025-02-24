@@ -54,7 +54,7 @@ mongo
 ```
 ## MongoDB Commands and Examples
 ### a. Database Commands
-##### 1. Show Databases:
+#### 1. Show Databases:
 ```
 show dbs
 ```
@@ -65,7 +65,7 @@ Example:
 admin   0.000GB
 config  0.000GB
 local   0.000GB
-##### 2. Switch/Create Database:
+#### 2. Switch/Create Database:
 ```
 use <database_name>
 ```
@@ -75,7 +75,7 @@ Example:
 > use mydb
 switched to db mydb
 ```
-##### 3. Drop Database:
+#### 3. Drop Database:
 
 ```
 db.dropDatabase()
@@ -88,7 +88,7 @@ Example:
 { "dropped" : "mydb", "ok" : 1 }
 ```
 ## b. Collection Commands
-##### 1. Create Collection:
+#### 1. Create Collection:
 
 ```
 db.createCollection("<collection_name>")
@@ -99,7 +99,7 @@ Example:
 > db.createCollection("users")
 { "ok" : 1 }
 ```
-##### 2. Show Collections:
+#### 2. Show Collections:
 
 ```
 show collections
@@ -110,7 +110,7 @@ Example:
 > show collections
 users
 ```
-##### 3. Drop Collection:
+#### 3. Drop Collection:
 
 ```
 db.<collection_name>.drop()
@@ -133,7 +133,7 @@ Example:
 > db.users.insert({ name: "John", age: 30, city: "New York" })
 WriteResult({ "nInserted" : 1 })
 ```
-##### 2. Insert Multiple Documents:
+#### 2. Insert Multiple Documents:
 
 ```
 db.<collection_name>.insertMany([<document1>, <document2>])
@@ -146,7 +146,7 @@ Example:
     { name: "Bob", age: 35, city: "Paris" }
   ])
 ```
-##### 3. Find Documents:
+#### 3. Find Documents:
 ```
 db.<collection_name>.find(<query>)
 ```
@@ -156,7 +156,7 @@ Example:
 > db.users.find({ age: { $gt: 30 } })
 { "_id" : ObjectId("..."), "name" : "Bob", "age" : 35, "city" : "Paris" }
 ```
-##### 4. Update Document:
+#### 4. Update Document:
 
 ```
 db.<collection_name>.update(<query>, <update>)
@@ -167,7 +167,7 @@ Example:
 > db.users.update({ name: "John" }, { $set: { age: 31 } })
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 ```
-##### 5. Delete Document:
+#### 5. Delete Document:
 
 ```
 db.<collection_name>.remove(<query>)
@@ -246,7 +246,7 @@ Example:
 ## f. Indexing
 Indexes improve query performance.
 
-##### 1. Create Index:
+#### 1. Create Index:
 ```
 db.<collection_name>.createIndex({ <field>: 1 })
 ```
@@ -255,7 +255,7 @@ Example:
 ```
 > db.users.createIndex({ name: 1 })
 ```
-##### 2. Show Indexes:
+#### 2. Show Indexes:
 
 ```
 db.<collection_name>.getIndexes()
@@ -265,7 +265,7 @@ Example:
 ```
 > db.users.getIndexes()
 ```
-##### 3.Drop Index:
+#### 3.Drop Index:
 
 ```
 db.<collection_name>.dropIndex({ <field>: 1 })
@@ -276,13 +276,13 @@ Example:
 > db.users.dropIndex({ name: 1 })
 ```
 ## Practice Exercises
-##### 1. Create a database called school and a collection called students.
+#### 1. Create a database called school and a collection called students.
 
 ```
 > use school
 > db.createCollection("students")
 ```
-##### 2. Insert 5 student documents with fields like name, age, and grade.
+#### 2. Insert 5 student documents with fields like name, age, and grade.
 
 ```
 > db.students.insertMany([
@@ -293,22 +293,22 @@ Example:
     { name: "Eve", age: 23, grade: "B" }
   ])
 ```
-##### 3. Find all students who are older than 20.
+#### 3. Find all students who are older than 20.
 
 ```
 > db.students.find({ age: { $gt: 20 } })
 ```
-##### 4. Update the grade of a student.
+#### 4. Update the grade of a student.
 
 ```
 > db.students.update({ name: "Alice" }, { $set: { grade: "A+" } })
 ```
-##### 5. Delete a student by name.
+#### 5. Delete a student by name.
 
 ```
 > db.students.remove({ name: "Eve" })
 ```
-##### 6. Create an index on the name field.
+#### 6. Create an index on the name field.
 
 ```
 > db.students.createIndex({ name: 1 })
