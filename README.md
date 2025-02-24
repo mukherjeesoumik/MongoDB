@@ -55,9 +55,11 @@ Example:
 ```cs
 > show dbs
 ```
+```cs
 admin   0.000GB
 config  0.000GB
 local   0.000GB
+```
 #### 2. Switch/Create Database:
 ```cs
 use <database_name>
