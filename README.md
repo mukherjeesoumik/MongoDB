@@ -49,249 +49,242 @@ MongoDB is a **document-oriented database**.
    mongod
 Connect to the server using the MongoDB shell:
 
-bash
-Copy
+```
 mongo
-MongoDB Commands and Examples
-a. Database Commands
-Show Databases:
-
-bash
-Copy
+```
+## MongoDB Commands and Examples
+### a. Database Commands
+##### 1. Show Databases:
+```
 show dbs
+```
 Example:
-
-bash
-Copy
+```
 > show dbs
+```
 admin   0.000GB
 config  0.000GB
 local   0.000GB
-Switch/Create Database:
-
-bash
-Copy
+##### 2. Switch/Create Database:
+```
 use <database_name>
+```
 Example:
 
-bash
-Copy
+```
 > use mydb
 switched to db mydb
-Drop Database:
+```
+##### 3. Drop Database:
 
-bash
-Copy
+```
 db.dropDatabase()
+```
 Example:
 
-bash
-Copy
+```
 > use mydb
 > db.dropDatabase()
 { "dropped" : "mydb", "ok" : 1 }
-b. Collection Commands
-Create Collection:
+```
+## b. Collection Commands
+##### 1. Create Collection:
 
-bash
-Copy
+```
 db.createCollection("<collection_name>")
+```
 Example:
 
-bash
-Copy
+```
 > db.createCollection("users")
 { "ok" : 1 }
-Show Collections:
+```
+##### 2. Show Collections:
 
-bash
-Copy
+```
 show collections
+```
 Example:
 
-bash
-Copy
+```
 > show collections
 users
-Drop Collection:
+```
+##### 3. Drop Collection:
 
-bash
-Copy
+```
 db.<collection_name>.drop()
+```
 Example:
 
-bash
-Copy
+```
 > db.users.drop()
 true
-c. Document Commands
-Insert Document:
+```
+## c. Document Commands
+##### 1. Insert Document:
 
-bash
-Copy
+```
 db.<collection_name>.insert(<document>)
+```
 Example:
 
-bash
-Copy
+```
 > db.users.insert({ name: "John", age: 30, city: "New York" })
 WriteResult({ "nInserted" : 1 })
-Insert Multiple Documents:
+```
+##### 2. Insert Multiple Documents:
 
-bash
-Copy
+```
 db.<collection_name>.insertMany([<document1>, <document2>])
+```
 Example:
 
-bash
-Copy
+```
 > db.users.insertMany([
     { name: "Alice", age: 25, city: "London" },
     { name: "Bob", age: 35, city: "Paris" }
   ])
-Find Documents:
-
-bash
-Copy
+```
+##### 3. Find Documents:
+```
 db.<collection_name>.find(<query>)
+```
 Example:
 
-bash
-Copy
+```
 > db.users.find({ age: { $gt: 30 } })
 { "_id" : ObjectId("..."), "name" : "Bob", "age" : 35, "city" : "Paris" }
-Update Document:
+```
+##### 4. Update Document:
 
-bash
-Copy
+```
 db.<collection_name>.update(<query>, <update>)
+```
 Example:
 
-bash
-Copy
+```
 > db.users.update({ name: "John" }, { $set: { age: 31 } })
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
-Delete Document:
+```
+##### 5. Delete Document:
 
-bash
-Copy
+```
 db.<collection_name>.remove(<query>)
+```
 Example:
 
-bash
-Copy
+```
 > db.users.remove({ name: "John" })
 WriteResult({ "nRemoved" : 1 })
-d. Query Operators
+```
+## d. Query Operators
 MongoDB provides various query operators for filtering data.
 
-Comparison Operators:
+#### Comparison Operators:
 
-$eq: Equal to
+1. $eq: Equal to
 
-$ne: Not equal to
+2. $ne: Not equal to
 
-$gt: Greater than
+3. $gt: Greater than
 
-$lt: Less than
+4. $lt: Less than
 
-$gte: Greater than or equal to
+5. $gte: Greater than or equal to
 
-$lte: Less than or equal to
+6. $lte: Less than or equal to
 
 Example:
 
-bash
-Copy
+```
 > db.users.find({ age: { $gt: 30 } })
-Logical Operators:
+```
+### Logical Operators:
 
-$and: Logical AND
+1. $and: Logical AND
 
-$or: Logical OR
+2. $or: Logical OR
 
-$not: Logical NOT
+3. $not: Logical NOT
 
-$nor: Logical NOR
+4. $nor: Logical NOR
 
 Example:
-
-bash
-Copy
+```
 > db.users.find({ $or: [{ age: 25 }, { city: "Paris" }] })
-Array Operators:
+```
+### Array Operators:
 
-$in: Matches any value in an array
+1. $in: Matches any value in an array
 
-$nin: Matches none of the values in an array
+2. $nin: Matches none of the values in an array
 
-$all: Matches all values in an array
+3. $all: Matches all values in an array
 
 Example:
 
-bash
-Copy
+```
 > db.users.find({ city: { $in: ["London", "Paris"] } })
-e. Aggregation Pipeline
+```
+## e. Aggregation Pipeline
 Aggregation operations process data and return computed results.
 
 Aggregation Pipeline:
 
-bash
-Copy
+```
 db.<collection_name>.aggregate([<stage1>, <stage2>, ...])
+```
 Example:
 
-bash
-Copy
+```
 > db.users.aggregate([
     { $match: { age: { $gt: 30 } } },
     { $group: { _id: "$city", total: { $sum: 1 } } }
   ])
-f. Indexing
+```
+## f. Indexing
 Indexes improve query performance.
 
-Create Index:
-
-bash
-Copy
+##### 1. Create Index:
+```
 db.<collection_name>.createIndex({ <field>: 1 })
+```
 Example:
 
-bash
-Copy
+```
 > db.users.createIndex({ name: 1 })
-Show Indexes:
+```
+##### 2. Show Indexes:
 
-bash
-Copy
+```
 db.<collection_name>.getIndexes()
+```
 Example:
 
-bash
-Copy
+```
 > db.users.getIndexes()
-Drop Index:
+```
+##### 3.Drop Index:
 
-bash
-Copy
+```
 db.<collection_name>.dropIndex({ <field>: 1 })
+```
 Example:
 
-bash
-Copy
+```
 > db.users.dropIndex({ name: 1 })
-Practice Exercises
-Create a database called school and a collection called students.
+```
+## Practice Exercises
+##### 1. Create a database called school and a collection called students.
 
-bash
-Copy
+```
 > use school
 > db.createCollection("students")
-Insert 5 student documents with fields like name, age, and grade.
+```
+##### 2. Insert 5 student documents with fields like name, age, and grade.
 
-bash
-Copy
+```
 > db.students.insertMany([
     { name: "Alice", age: 20, grade: "A" },
     { name: "Bob", age: 22, grade: "B" },
@@ -299,23 +292,24 @@ Copy
     { name: "David", age: 21, grade: "A" },
     { name: "Eve", age: 23, grade: "B" }
   ])
-Find all students who are older than 20.
+```
+##### 3. Find all students who are older than 20.
 
-bash
-Copy
+```
 > db.students.find({ age: { $gt: 20 } })
-Update the grade of a student.
+```
+##### 4. Update the grade of a student.
 
-bash
-Copy
+```
 > db.students.update({ name: "Alice" }, { $set: { grade: "A+" } })
-Delete a student by name.
+```
+##### 5. Delete a student by name.
 
-bash
-Copy
+```
 > db.students.remove({ name: "Eve" })
-Create an index on the name field.
+```
+##### 6. Create an index on the name field.
 
-bash
-Copy
+```
 > db.students.createIndex({ name: 1 })
+```
